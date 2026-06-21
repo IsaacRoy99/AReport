@@ -152,13 +152,35 @@
             <div class="row">
 
               <div class="col-md-6 mb-3">
-                <label class="form-label">Department</label>
-                <select class="form-select form-select-lg">
-                  <option>Human Resources</option>
-                  <option>Finance</option>
-                  <option>IT Department</option>
-                  <option>Compliance</option>
-                  <option>Talent</option>
+                <label class="form-label">Team</label>
+                <select class="form-select form-select-lg" id="team">
+                  <option value="">Select Team</option>
+                  <option>ACADEMICS</option>
+                  <option>COMPLIANCE</option>
+                  <option>CONSULT</option>
+                  <option>CONSTRUCT</option>
+                  <option>STUDIOS</option>
+                  <option>IT (Ozone)</option>
+                  <option>TALENT</option>
+                  <option>HR & PAYROLL</option>
+                  <option>FINANCE</option>
+                  <option>FORGE NORTHERN CAMPUS</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Project Status</label>
+                <select class="form-select form-select-lg" id="status">
+                  <option value="">Select Status</option>
+                  <option>Proposal / Quotation</option>
+                  <option>SLA in Progress</option>
+                  <option>Planning Phase</option>
+                  <option>Project Initiation</option>
+                  <option>Implementation / In Progress</option>
+                  <option>On Hold</option>
+                  <option>Blocked</option>
+                  <option>Project Close-Out</option>
+                  <option>Completed</option>
                 </select>
               </div>
 
@@ -196,6 +218,45 @@
           </form>
 
         </div>
+
+        <!-- Recent Reports Table -->
+<div class="card shadow-sm border-0 rounded-4 p-4 mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Recent Reports</h3>
+
+        <input
+            type="text"
+            id="searchInput"
+            class="form-control w-25"
+            placeholder="Search reports..."
+        >
+    </div>
+
+    <div class="table-responsive">
+      <input
+      type="text"
+      id="searchInput"
+      class="form-control mb-3"
+      placeholder="Search reports...">
+        <table class="table table-hover align-middle">
+
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Team</th>
+                    <th>Status</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+
+            <tbody id="reportTable">
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
 
       </div>
     </div>
