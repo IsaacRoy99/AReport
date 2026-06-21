@@ -1,47 +1,82 @@
 const reportForm = document.getElementById("reportForm");
 
-reportForm.addEventListener("submit", function(e){
+function getStatusBadge(status){
+    if(status === "Completed") return "success";
+    if(status === "Blocked") return "danger";
+    if(status === "On Hold") return "warning";
+    return "primary";
+}
 
+function loadReports(){
+    let reports = JSON.parse(localStorage.getItem("reports")) || [];
+    let table = document.getElementById("reportTable");
+
+    table.innerHTML = "";
+
+    reports.forEach(report => {
+        table.innerHTML += `
+            <tr>
+                <td>${report.title}</td>
+                <td>${report.team}</td>
+                <td>
+                    <span class="badge bg-${getStatusBadge(report.status)}">
+                        ${report.status}
+                    </span>
+                </td>
+                <td>${report.summary}</td>
+            </tr>
+        `;
+    });
+}
+
+reportForm.addEventListener("submit", function(e){
     e.preventDefault();
 
-    // Inputs
     const title = document.querySelector('input[type="text"]').value.trim();
-    const department = document.querySelector('select').value.trim();
+    const team = document.getElementById("team").value.trim();
+    const status = document.getElementById("status").value.trim();
     const summary = document.querySelectorAll('textarea')[0].value.trim();
     const challenges = document.querySelectorAll('textarea')[1].value.trim();
     const progress = document.querySelectorAll('textarea')[2].value.trim();
 
-    // Validation
-    if(title === "" || summary === "" || challenges === "" || progress === ""){
-
+    if(
+        title === "" ||
+        team === "" ||
+        status === "" ||
+        summary === "" ||
+        challenges === "" ||
+        progress === ""
+    ){
         Swal.fire({
             title: "Missing Information",
-            text: "Please complete all required fields before submitting the report.",
-            icon: "error",
-            confirmButtonText: "Okay",
-            confirmButtonColor: "#d33",
-            background: "#ffffff"
+            text: "Please complete all required fields before submitting.",
+            icon: "error"
         });
-
         return;
     }
 
-    // Success Alert
+    const report = {
+        title,
+        team,
+        status,
+        summary
+    };
+
+    let reports = JSON.parse(localStorage.getItem("reports")) || [];
+    reports.push(report);
+
+    localStorage.setItem("reports", JSON.stringify(reports));
+
+    loadReports();
+
     Swal.fire({
         title: "Report Submitted!",
-        html: `
-            <b>Your department report was submitted successfully.</b>
-            <br><br>
-            The report has been forwarded for managerial review.
-        `,
+        text: "Your report has been saved successfully.",
         icon: "success",
-        confirmButtonText: "Close",
-        confirmButtonColor: "#fca311",
-        background: "#ffffff",
-        allowOutsideClick: false
+        confirmButtonColor: "#fca311"
     });
 
-    // Reset Form
     reportForm.reset();
-
 });
+
+loadReports();
