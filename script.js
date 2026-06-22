@@ -1,5 +1,8 @@
 const reportForm = document.getElementById("reportForm");
 
+if(reportForm){
+    reportForm.addEventListener("submit", function(e){
+
 function getStatusBadge(status){
     if(status === "Completed") return "success";
     if(status === "Blocked") return "danger";
