@@ -2,6 +2,8 @@ const reportForm = document.getElementById("reportForm");
 
 if(reportForm){
     reportForm.addEventListener("submit", function(e){
+});
+}        
 
 function getStatusBadge(status){
     if(status === "Completed") return "success";
@@ -136,5 +138,4 @@ if(signupForm){
         window.location.href = "index.html";
     });
 }
-});
-}
+
