@@ -85,7 +85,50 @@ const loginForm = document.getElementById("loginForm");
 
 if(loginForm){
     loginForm.addEventListener("submit", function(e){
+
         e.preventDefault();
+
+        const email = document.querySelector('input[type="email"]').value.trim();
+        const password = document.querySelector('input[type="password"]').value.trim();
+
+        if(email === "" || password === ""){
+
+            Swal.fire({
+                title: "Missing Information",
+                text: "Please enter your email and password.",
+                icon: "error",
+                confirmButtonColor: "#d33"
+            });
+
+            return;
+        }
+
+        window.location.href = "index.html";
+    });
+}
+
+const signupForm = document.getElementById("signupForm");
+
+if(signupForm){
+    signupForm.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        const name = document.querySelector('input[type="text"]').value.trim();
+        const email = document.querySelector('input[type="email"]').value.trim();
+        const password = document.querySelector('input[type="password"]').value.trim();
+
+        if(name === "" || email === "" || password === ""){
+
+            Swal.fire({
+                title: "Missing Information",
+                text: "Please complete all signup fields.",
+                icon: "error",
+                confirmButtonColor: "#d33"
+            });
+
+            return;
+        }
 
         window.location.href = "index.html";
     });
