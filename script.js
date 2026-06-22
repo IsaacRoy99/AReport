@@ -136,3 +136,5 @@ if(signupForm){
         window.location.href = "index.html";
     });
 }
+});
+}
