@@ -122,6 +122,29 @@ body{
     border-radius:10px;
 }
 
+.login-body{
+    background: linear-gradient(rgba(11,19,43,0.9), rgba(28,37,65,0.9)),
+    url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.login-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.login-card{
+    width:420px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    padding:40px;
+    border-radius:20px;
+}
+
 <footer class="text-center py-4 mt-5 text-muted">
     © 2026 Forge Academy - Internal Reporting System
 </footer>
