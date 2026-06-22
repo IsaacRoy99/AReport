@@ -80,3 +80,13 @@ reportForm.addEventListener("submit", function(e){
 });
 
 loadReports();
+
+const loginForm = document.getElementById("loginForm");
+
+if(loginForm){
+    loginForm.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        window.location.href = "index.html";
+    });
+}
