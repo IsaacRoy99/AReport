@@ -12,6 +12,25 @@ function getStatusBadge(status) {
     return "primary";
 }
 
+// ================================
+// DASHBOARD ACCESS CHECK
+// ================================
+
+if (
+    window.location.pathname.endsWith("index.html") &&
+    sessionStorage.getItem("loggedIn") !== "true"
+) {
+    window.location.href = "login.html";
+}
+
+if (
+    (window.location.pathname.endsWith("/") ||
+     window.location.pathname.endsWith("index.html")) &&
+    sessionStorage.getItem("loggedIn") !== "true"
+) {
+    window.location.href = "login.html";
+}
+
 
 function loadReports() {
 
@@ -134,6 +153,34 @@ if (reportForm) {
 
 // Load reports when dashboard opens
 loadReports();
+updateStats();
+
+function updateStats() {
+
+    const reports = JSON.parse(localStorage.getItem("reports")) || [];
+
+    const submitted = document.getElementById("reportsSubmitted");
+    const pending = document.getElementById("pendingReviews");
+    const approved = document.getElementById("approvedReports");
+
+    if (!submitted || !pending || !approved) return;
+
+
+    const submittedCount = reports.length;
+
+    const pendingCount = reports.filter(report =>
+        report.status !== "Completed"
+    ).length;
+
+    const approvedCount = reports.filter(report =>
+        report.status === "Completed"
+    ).length;
+
+
+    submitted.textContent = submittedCount;
+    pending.textContent = pendingCount;
+    approved.textContent = approvedCount;
+}
 
 
 // ================================
@@ -192,6 +239,7 @@ if (loginForm) {
 
 
         // Demo login
+        sessionStorage.setItem("loggedIn", "true");
         window.location.href = "index.html";
     });
 }
@@ -230,6 +278,23 @@ if (signupForm) {
 
 
         // Demo signup
+        sessionStorage.setItem("loggedIn", "true");
         window.location.href = "index.html";
+    });
+}
+
+// ================================
+// LOGOUT
+// ================================
+
+const logoutButton = document.getElementById("logoutButton");
+
+if (logoutButton) {
+
+    logoutButton.addEventListener("click", function() {
+
+        sessionStorage.removeItem("loggedIn");
+
+        window.location.href = "login.html";
     });
 }
