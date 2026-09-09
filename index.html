@@ -48,9 +48,9 @@
                     <img src="forge-logo-wht.png"
                          width="120"
                          class="me-3">
-                         <a href="login.html"><button class="btn btn-warning fw-semibold">
-        Logout
-      </button></a>
+                         <button id="logoutButton" class="btn btn-warning fw-semibold">
+                            Logout
+                          </button>
 
                 </div>
 
@@ -75,8 +75,10 @@
         My Reports
         </button>
         <button class="nav-btn"><i class="fa-solid fa-envelope-circle-check me-2"></i>Sent Reports</button>
-        <button class="nav-btn">All Reports</button>
-
+        <button class="nav-btn">
+          <i class="fa-solid fa-file-lines me-2"></i>
+          All Reports
+        </button>
         <h5 class="mb-4">Workflows</h5>
         <button class="nav-btn">
         <i class="fa-solid fa-clock me-2"></i>
@@ -105,21 +107,21 @@
           <div class="col-md-3 mb-3">
             <div class="card stats-card border-0 rounded-4 p-3">
               <h6>Reports Submitted</h6>
-              <h2>24</h2>
+              <h2 id="reportsSubmitted">24</h2>
             </div>
           </div>
 
           <div class="col-md-3 mb-3">
             <div class="card stats-card border-0 rounded-4 p-3">
               <h6>Pending Reviews</h6>
-              <h2>6</h2>
+              <h2 id="pendingReviews">6</h2>
             </div>
           </div>
 
           <div class="col-md-3 mb-3">
             <div class="card stats-card border-0 rounded-4 p-3">
               <h6>Approved Reports</h6>
-              <h2>18</h2>
+              <h2 id="approvedReports">18</h2>
             </div>
           </div>
 
@@ -141,7 +143,9 @@
 
             <div class="mb-3">
               <label class="form-label">Report Title</label>
-              <input type="text" class="form-control form-control-lg" placeholder="Enter report title">
+              <input type="text" id="reportTitle" class="form-control form-control-lg"
+                placeholder="Enter report title">            
+              
             </div>
 
             <div class="row">
@@ -229,11 +233,7 @@
     </div>
 
     <div class="table-responsive">
-      <input
-      type="text"
-      id="searchInput"
-      class="form-control mb-3"
-      placeholder="Search reports...">
+      
         <table class="table table-hover align-middle">
 
             <thead>
