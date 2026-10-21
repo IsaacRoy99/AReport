@@ -30,11 +30,13 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Seed database
+// Apply database migrations, then seed demo data.
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider
         .GetRequiredService<ApplicationDbContext>();
+
+    context.Database.Migrate();
 
     DbInitializer.Seed(context);
 }
