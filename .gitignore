@@ -1,0 +1,21 @@
+
+# .NET build output
+**/bin/
+**/obj/
+
+# Local uploads and user attachments
+**/uploads/
+
+# Local configuration and secrets
+**/appsettings.Development.json
+
+# Local development files
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Environment variables
+.env
+.env.*
+!.env.example

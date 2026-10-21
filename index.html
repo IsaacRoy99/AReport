@@ -148,6 +148,18 @@
               
             </div>
 
+            <div class="mb-3">
+              <label class="form-label fw-semibold">
+                Level of Importance
+              </label>
+
+              <select id="importance" class="form-select">
+              <option value="NOT / Casual">NOT / Casual</option>
+              <option value="Important" selected>Important</option>
+              <option value="Urgent">Urgent</option>
+              </select>
+            </div>
+
             <div class="row">
 
               <div class="col-md-6 mb-3">
@@ -207,7 +219,12 @@
 
             <div class="mb-4">
               <label class="form-label">Attach File</label>
-              <input type="file" class="form-control">
+              <input
+                type="file"
+                id="attachmentFile"
+                class="form-control"
+                accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg"
+              >
             </div>
 
             <button id="submitBtn" class="btn btn-warning btn-lg fw-semibold px-5">
@@ -241,7 +258,8 @@
                     <th>Title</th>
                     <th>Team</th>
                     <th>Status</th>
-                    <th>Summary</th>
+                    <th>Review</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
