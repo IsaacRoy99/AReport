@@ -46,17 +46,23 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseCors("AllowFrontend");
-
-// HTTPS is disabled for today's local demo
-// app.UseHttpsRedirection();
-
 app.UseAuthorization();
+
+var uploadsPath = Path.Combine(
+    app.Environment.ContentRootPath,
+    "uploads"
+);
+
+Directory.CreateDirectory(uploadsPath);
 
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
-        Path.Combine(app.Environment.ContentRootPath, "uploads")
+        uploadsPath
     ),
     RequestPath = "/uploads"
 });
